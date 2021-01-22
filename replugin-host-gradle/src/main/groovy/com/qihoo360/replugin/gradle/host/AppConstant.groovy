@@ -23,7 +23,7 @@ package com.qihoo360.replugin.gradle.host
 class AppConstant {
 
     /** 版本号 */
-    def static final VER = "${RP_VERSION}"
+    def static final VER = "2.3.4"
 
     /** 打印信息时候的前缀 */
     def static final TAG = "< replugin-host-v${VER} >"
@@ -42,6 +42,9 @@ class AppConstant {
 
     /** 用户Task:Generate任务 */
     def static final TASK_GENERATE = TASKS_PREFIX + "Generate"
+
+
+    def static final SUPPORT_PROCESS_COUNT = 3
 
 
     private AppConstant() {}

@@ -20,6 +20,8 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
 repositories {
+    maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+    maven { url 'https://maven.aliyun.com/repository/google/' }
     jcenter()
     mavenCentral()
     maven() { url 'https://maven.google.com' }
@@ -27,6 +29,8 @@ repositories {
 
 buildscript {
     repositories {
+        maven { url 'https://maven.aliyun.com/repository/jcenter/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
         jcenter()
         mavenCentral()
     }

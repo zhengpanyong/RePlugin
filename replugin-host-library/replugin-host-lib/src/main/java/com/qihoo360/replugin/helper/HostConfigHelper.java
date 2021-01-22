@@ -40,6 +40,8 @@ public class HostConfigHelper {
     // 是否使用“常驻进程”（见PERSISTENT_NAME）作为插件的管理进程
     public static boolean PERSISTENT_ENABLE = true;
 
+    public static int SUPPORT_PROCESS_COUNT = 3;
+
     // 常驻进程名
     public static String PERSISTENT_NAME = ":GuardService";
 
@@ -81,6 +83,12 @@ public class HostConfigHelper {
 
         try {
             PERSISTENT_ENABLE = readField("PERSISTENT_ENABLE");
+        } catch (NoSuchFieldException e) {
+            // Ignore, Just use default value
+        }
+
+        try {
+            SUPPORT_PROCESS_COUNT = readField("SUPPORT_PROCESS_COUNT");
         } catch (NoSuchFieldException e) {
             // Ignore, Just use default value
         }

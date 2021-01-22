@@ -87,6 +87,9 @@ public class RePluginHostConfig {
     // TaskAffinity 组数
     public static int ACTIVITY_PIT_COUNT_TASK = ${config.countTask};
 
+    // 主程序支持的进程数p0...pn
+    public static int SUPPORT_PROCESS_COUNT = ${config.countProcess};
+
     // 是否使用 AppCompat 库
     public static boolean ACTIVITY_PIT_USE_APPCOMPAT = ${config.useAppCompat};
 

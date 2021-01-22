@@ -83,14 +83,16 @@
 -keep class com.qihoo360.replugin.component.service.PluginServiceClient {
     public protected *;
 }
--keep class com.qihoo360.replugin.component.provider.PluginPitProviderP0 { public protected *; }
--keep class com.qihoo360.replugin.component.provider.PluginPitProviderP1 { public protected *; }
--keep class com.qihoo360.replugin.component.provider.PluginPitProviderP2 { public protected *; }
+#-keep class com.qihoo360.replugin.component.provider.PluginPitProviderP0 { public protected *; }
+#-keep class com.qihoo360.replugin.component.provider.PluginPitProviderP1 { public protected *; }
+#-keep class com.qihoo360.replugin.component.provider.PluginPitProviderP2 { public protected *; }
+-keep class * extends com.qihoo360.replugin.component.provider.PluginPitProviderBase { public protected *; }
 
 # ProcessPitProviderP0 未被自动 keep
--keep class com.qihoo360.replugin.component.process.ProcessPitProviderP0 { public protected *; }
--keep class com.qihoo360.replugin.component.process.ProcessPitProviderP1 { public protected *; }
--keep class com.qihoo360.replugin.component.process.ProcessPitProviderP2 { public protected *; }
+#-keep class com.qihoo360.replugin.component.process.ProcessPitProviderP0 { public protected *; }
+#-keep class com.qihoo360.replugin.component.process.ProcessPitProviderP1 { public protected *; }
+#-keep class com.qihoo360.replugin.component.process.ProcessPitProviderP2 { public protected *; }
+-keep class * extends com.qihoo360.replugin.component.process.ProcessPitProviderBase { public protected *; }
 
 # TODO 可能要废弃的类。目前旧卫士插件在用
 # Pref

@@ -18,6 +18,8 @@ package com.qihoo360.replugin.gradle.host.creator
 
 import com.qihoo360.replugin.gradle.host.AppConstant
 import com.qihoo360.replugin.gradle.host.creator.impl.java.RePluginHostConfigCreator
+import com.qihoo360.replugin.gradle.host.creator.impl.java.PluginPitProviderCreator
+import com.qihoo360.replugin.gradle.host.creator.impl.java.ProcessPitProviderCreator
 import com.qihoo360.replugin.gradle.host.creator.impl.json.PluginBuiltinJsonCreator
 
 /**
@@ -49,6 +51,16 @@ public class FileCreators {
 
     static def createHostConfig(project, variant, config) {
         def creator = new RePluginHostConfigCreator(project, variant, config)
+        create(creator)
+    }
+
+    static def createProcessPitProvider(project, variant, config, pn) {
+        def creator = new ProcessPitProviderCreator(project, variant, config, pn)
+        create(creator)
+    }
+
+    static def createPluginPitProvider(project, variant, config, pn) {
+        def creator = new PluginPitProviderCreator(project, variant, config, pn)
         create(creator)
     }
 

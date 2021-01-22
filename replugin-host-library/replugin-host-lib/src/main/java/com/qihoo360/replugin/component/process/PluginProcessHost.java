@@ -20,6 +20,7 @@ import android.util.SparseArray;
 
 import com.qihoo360.replugin.base.IPC;
 import com.qihoo360.replugin.component.provider.PluginPitProviderBase;
+import com.qihoo360.replugin.helper.HostConfigHelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class PluginProcessHost {
     /**
      * 自定义插件的数量，暂时只支持3个自定义进程
      */
-    public static final int PROCESS_COUNT = 3;
+    public static final int PROCESS_COUNT = HostConfigHelper.SUPPORT_PROCESS_COUNT;
 
     /**
      * 自定义进程，int 标识，从 -100 开始，每次加 1；

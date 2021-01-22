@@ -71,6 +71,10 @@ public class Replugin implements Plugin<Project> {
 
                 generateHostConfigTask.doLast {
                     FileCreators.createHostConfig(project, variant, config)
+                    for (int i = AppConstant.SUPPORT_PROCESS_COUNT; i < config.countProcess; i++) {
+                        FileCreators.createPluginPitProvider(project, variant, config, i)
+                        FileCreators.createProcessPitProvider(project, variant, config, i)
+                    }
                 }
                 generateHostConfigTask.group = AppConstant.TASKS_GROUP
 
@@ -237,7 +241,7 @@ public class Replugin implements Plugin<Project> {
 class RepluginConfig {
 
     /** 自定义进程的数量(除 UI 和 Persistent 进程) */
-    def countProcess = 3
+    def countProcess = AppConstant.SUPPORT_PROCESS_COUNT
 
     /** 是否使用常驻进程？ */
     def persistentEnable = true
