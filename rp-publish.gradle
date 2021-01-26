@@ -39,7 +39,9 @@ def pbUpdateVariables(){
 
 apply from: "${buildscript.sourceFile.parent}/rp-config.gradle"
 
-group = getPropertyExt('RP_GROUP')
+group = System.getenv('RP_GROUP')
+
+//group = getPropertyExt('RP_GROUP')
 
 version = getPropertyExt('RP_VERSION')
 
@@ -77,6 +79,11 @@ def pbGitUrl = getPropertyExt('RP_GIT_URL', pbSiteUrl)
 
 def pbIssueUrl = getPropertyExt('RP_ISSUE_URL', pbSiteUrl)
 
+def localUrl = System.getenv('RP_LOCAL_URL');
+def localUser = System.getenv('RP_LOCAL_USER');
+def localPsw = System.getenv('RP_LOCAL_PSW');
+
+
 println(
 	">>>「publish.gradle」 CONFIGURATIONS:"
     + "\n ${group}:${pbArtifactId}:${version}"
@@ -88,6 +95,9 @@ println(
 	+ "\n pbIssueUrl = ${pbIssueUrl}"
     + "\n License = ${pbLicense}(${pbLicenseUrl})"
 	+ "\n pbBintayKey = ${pbBintayKey}"
+    + "\n localUrl = ${localUrl}"
+    + "\n localUser = ${localUser}"
+    + "\n localPsw = ${localPsw}"
 )
 
 //// task
@@ -135,12 +145,16 @@ if ( pbBintayKey == null ){
     final def theGroup = group // group will be reset to 'upload'
     uploadArchives {
        repositories.mavenDeployer {
-           repository(url: "file://${System.getenv('HOME')}/.m2/repository")
+           repository(url: localUrl){
+               authentication(userName: localUser, password: localPsw)
+           }
            pom.groupId = theGroup
            pom.version = version
            pom.artifactId = pbArtifactId
+
        }
     }
+
 
     return
 }
